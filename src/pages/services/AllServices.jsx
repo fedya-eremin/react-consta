@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/header/Header";
 import MyCard from "../../components/card/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { selectServices, setService } from "../../store/store";
 
 
 
 const AllServices = () => {
-  const [services, setServices] = useState([]);
+  const dispatch = useDispatch()
+  const services = useSelector(selectServices)
 
   useEffect(() => {
-    fetch("https://673423afa042ab85d1190055.mockapi.io/api/v1/services").then((response) => {
-      return response.json()
-    }).then((data) => {
-      setServices(data)
-    })
-  }, [services, setServices])
+    if (services.length === 0) {
+      fetch("https://673423afa042ab85d1190055.mockapi.io/api/v1/services")
+        .then((response) => response.json())
+        .then((data) => {
+          dispatch(setService(data));
+        })
+        .catch((error) => console.error("Error fetching services:", error));
+    }
+  }, [dispatch, services.length]);
+
 
   return (
     <>

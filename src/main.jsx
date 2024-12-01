@@ -7,6 +7,10 @@ import SignIn from "./pages/sign-in/SignIn";
 import NotFound from "./pages/not-found/NotFound";
 import AllServices from "./pages/services/AllServices";
 import ServiceDetail from "./pages/services/Service";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import AuthRoute from "./components/auth-route/AuthRoute";
+import UserProfile from "./pages/profile/Profile";
 
 
 const router = createBrowserRouter([
@@ -24,17 +28,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/services",
-    element: <AllServices />,
+    element:
+      <AuthRoute>
+        <AllServices />
+      </AuthRoute>
   },
   {
     path: "/services/:id",
-    element: <ServiceDetail />,
+    element: <AuthRoute><ServiceDetail /></AuthRoute>,
     errorElement: <NotFound />
+  },
+  {
+    path: "/profile",
+    element: <AuthRoute><UserProfile /></AuthRoute>
   }
+  
 ])
 
 createRoot(document.getElementById("root")).render(
   <DefaultLayout>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </DefaultLayout>
 );
