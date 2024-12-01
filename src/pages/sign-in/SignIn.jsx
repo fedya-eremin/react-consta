@@ -2,6 +2,10 @@ import { useState } from "react";
 import {Button} from "@consta/uikit/Button"
 import Header from "../../components/header/Header";
 import {Informer} from "@consta/uikit/Informer"
+import { login } from "../../store/api-methods";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser, setUser } from "../../store/store";
+import { useNavigate } from "react-router-dom";
 
 
 const SignIn = () => {
@@ -9,6 +13,9 @@ const SignIn = () => {
     username: '',
     password: ''
   });
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch();
 
   const [invalidInput, setInvalidInput] = useState(false);
 
@@ -26,7 +33,14 @@ const SignIn = () => {
     } else {
       setInvalidInput(false)
     }
-    console.log(formData.username)
+    login(formData.username, formData.password).then((res) => {
+      dispatch(setUser(res))
+      localStorage.setItem("jwt", res.accessToken)
+      localStorage.setItem("refresh", res.refreshToken)
+      navigate("/")
+    }).catch(() => {
+      setInvalidInput(true)
+    })
   }
 
   return (
