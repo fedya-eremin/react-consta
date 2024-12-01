@@ -18,7 +18,7 @@ const Header = () => {
         <Button label="Услуги компании" onClick={() => navigate("/about")} />
       </div>
       <div>
-        <User />
+      { authorized ? <User onClick={() => navigate("/profile")}/> : null}
         <Button label="Вход" onClick={() => navigate("/sign_in")}/>
       </div>
     </header>
