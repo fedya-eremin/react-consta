@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {Button} from "@consta/uikit/Button"
 import Header from "../../components/header/Header";
+import {Informer} from "@consta/uikit/Informer"
 
 
 const SignIn = () => {
@@ -8,6 +9,8 @@ const SignIn = () => {
     username: '',
     password: ''
   });
+
+  const [invalidInput, setInvalidInput] = useState(false);
 
 
   function updateFormData (e) {
@@ -17,6 +20,12 @@ const SignIn = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!formData.username && !formData.password) {
+      setInvalidInput(true)
+      return
+    } else {
+      setInvalidInput(false)
+    }
     console.log(formData.username)
   }
 
@@ -34,6 +43,9 @@ const SignIn = () => {
             <input type="password" name="password" onChange={updateFormData}/>
           </label>
           <Button label="Sign In" type="submit" />
+          { invalidInput ? 
+            <Informer status="alert" view="filled" label="Заполните поля"/>
+          : null}
         </form>
       </main>
     </>
