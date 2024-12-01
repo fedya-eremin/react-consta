@@ -5,6 +5,8 @@ import Home from "./pages/home-page/Home";
 import DefaultLayout from "./layouts/default/DefaultLayout";
 import SignIn from "./pages/sign-in/SignIn";
 import NotFound from "./pages/not-found/NotFound";
+import AllServices from "./pages/services/AllServices";
+import ServiceDetail from "./pages/services/Service";
 
 
 const router = createBrowserRouter([
@@ -19,6 +21,15 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <NotFound />
+  },
+  {
+    path: "/services",
+    element: <AllServices />,
+  },
+  {
+    path: "/services/:id",
+    element: <ServiceDetail />,
+    errorElement: <NotFound />
   }
 ])
 

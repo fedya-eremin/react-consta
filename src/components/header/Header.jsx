@@ -15,10 +15,9 @@ const Header = () => {
     }}>
       <div>
         <Button label="Главная страница" onClick={() => navigate("/")} />
-        <Button label="Услуги компании" onClick={() => navigate("/about")} />
+        <Button label="Услуги компании" onClick={() => navigate("/services")} />
       </div>
       <div>
-      { authorized ? <User onClick={() => navigate("/profile")}/> : null}
         <Button label="Вход" onClick={() => navigate("/sign_in")}/>
       </div>
     </header>
