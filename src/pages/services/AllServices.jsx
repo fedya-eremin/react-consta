@@ -4,6 +4,7 @@ import MyCard from "../../components/card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { selectServices, setService } from "../../store/store";
 import Footer from "../../components/footer/Footer";
+import {Grid, GridItem} from "@consta/uikit/Grid"
 
 
 
@@ -26,14 +27,16 @@ const AllServices = () => {
   return (
     <>
       <Header />
-      <main style={{width: "80vh", margin: "auto"}}>
-        <div style={{display: "flex", flexFlow: "row wrap", justifyContent: "space-between", gap: "5px"}}>
+      <main style={{width: "80vh", margin: "auto", marginTop: "70px"}}>
+        <Grid cols={3}>
         { services.length > 0 ?
           services.map((item) => (
-            <MyCard key={item.id} id={item.id} imgURI={item.image} name={item.name} desc={item.description} /> 
+            <GridItem>
+              <MyCard key={item.id} id={item.id} imgURI={item.image} name={item.name} desc={item.description} /> 
+            </GridItem>
           ))
         : "Загрузка..."}
-        </div>
+        </Grid>
       </main>
       <Footer />
     </>

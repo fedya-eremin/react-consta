@@ -8,10 +8,10 @@ import Footer from '../../components/footer/Footer';
 const UserProfile = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true); // Состояние загрузки
+  const [loading, setLoading] = useState(true);
 
   const fetchUserData = useCallback(async () => {
-    setLoading(true); // Устанавливаем состояние загрузки в true
+    setLoading(true);
     try {
       const userData = await getMe(
         localStorage.getItem("jwt"),
@@ -21,7 +21,7 @@ const UserProfile = () => {
     } catch (error) {
       console.error("Ошибка при получении данных пользователя:", error);
     } finally {
-      setLoading(false); // Устанавливаем состояние загрузки в false после завершения
+      setLoading(false);
     }
   }, [dispatch]);
 
@@ -30,15 +30,15 @@ const UserProfile = () => {
   }, [fetchUserData]);
 
   if (loading) {
-    return <div>Загрузка...</div>; // Отображаем сообщение о загрузке
+    return <div>Загрузка...</div>;
   }
 
   return (
     <>
     <Header />
-    <div className="user-profile">
+    <div style={{marginTop: "70px", display: "flex", justifyContent: "center"}}>
+      <div>
       <h1>Профиль пользователя</h1>
-      <div className="profile-info">
         <img src={user.image} alt={`${user.firstName} ${user.lastName}`} className="profile-image" />
         <h2>{`${user.firstName} ${user.lastName}`}</h2>
         <p><strong>Имя пользователя:</strong> {user.username}</p>
