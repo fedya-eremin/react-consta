@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import MyCard from "../../components/card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { selectServices, setService } from "../../store/store";
+import Footer from "../../components/footer/Footer";
 
 
 
@@ -34,6 +35,7 @@ const AllServices = () => {
         : "Загрузка..."}
         </div>
       </main>
+      <Footer />
     </>
   )
 

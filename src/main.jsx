@@ -36,13 +36,11 @@ const router = createBrowserRouter([
   {
     path: "/services/:id",
     element: <AuthRoute><ServiceDetail /></AuthRoute>,
-    errorElement: <NotFound />
   },
   {
     path: "/profile",
     element: <AuthRoute><UserProfile /></AuthRoute>
   }
-  
 ])
 
 createRoot(document.getElementById("root")).render(
