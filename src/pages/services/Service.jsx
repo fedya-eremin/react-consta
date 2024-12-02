@@ -24,6 +24,7 @@ const ServiceDetail = () => {
   return (
     <>
       <Header />
+      <div style={{marginTop: "70px"}}>
       {service ? (
         <MyCard 
           imgURI={service.image} 
@@ -34,6 +35,7 @@ const ServiceDetail = () => {
       ) : (
         <div>Услуга не найдена.</div>
       )}
+      </div>
       <Footer />
     </>
   );

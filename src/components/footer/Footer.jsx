@@ -13,7 +13,6 @@ const Footer = () => {
       display: "flex",
       justifyContent: "space-evenly",
       alignItems: "center",
-      position: "sticky",
       position: "fixed",
       bottom: 0,
       left: 0,
@@ -21,15 +20,13 @@ const Footer = () => {
       padding: "10px 0",
       backgroundColor: "white"
     }}>
-      <div>
         <Button label="Главная страница" onClick={() => navigate("/")} />
         {user != null ? <Button label="Услуги компании" onClick={() => navigate("/services")} /> : null}
-      </div>
       <div>
         {user ? (
           <p style={{ margin: 0 }}>Добро пожаловать, {user.username}!</p>
         ) : (
-          <p style={{ margin: 0 }}>© 2024 Ваша Компания. Все права защищены.</p>
+          <p style={{ margin: 0 }}>© 2024 Все права защищены.</p>
         )}
       </div>
     </footer>

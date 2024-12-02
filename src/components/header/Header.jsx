@@ -10,23 +10,24 @@ const Header = () => {
   const user = useSelector(selectUser);
 
   return (
-    <header style={{
-      display: "flex",
-      justifyContent: "space-evenly",
-      position: "sticky",
-      top: 0,
-      paddingBottom: "20px",
-    }}>
-      <div>
+      <header style={{
+        display: "flex",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        padding: "10px 0",
+        backgroundColor: "white",
+        zIndex: 1000
+      }}>
         <Button label="Главная страница" onClick={() => navigate("/")} />
-        {user != null ? <Button label="Услуги компании" onClick={() => navigate("/services")} /> : null}
-      </div>
-      <div>
-        {user != null ? <User name={user.username} onClick={() => navigate("/profile")}/> : null}
-        {user == null ? <Button label="Вход" onClick={() => navigate("/sign_in")}/> : null}
-      </div>
-    </header>
-  )
+        {user != null ? <Button label="Услуги компании" onClick={() => navigate("/services")}  /> : null}
+        {user != null ? <User name={user.username} onClick={() => navigate("/profile")} /> : null}
+        {user == null ? <Button label="Вход" onClick={() => navigate("/sign_in")}  />: null}
+      </header>
+ )
 }
 
 export default Header;
