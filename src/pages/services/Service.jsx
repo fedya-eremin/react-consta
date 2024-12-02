@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MyCard from '../../components/card/Card'; 
 import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
 
 const ServiceDetail = () => {
   const { id } = useParams();
@@ -33,6 +34,7 @@ const ServiceDetail = () => {
       ) : (
         <div>Услуга не найдена.</div>
       )}
+      <Footer />
     </>
   );
 };

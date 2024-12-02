@@ -6,6 +6,7 @@ import { login } from "../../store/api-methods";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, setUser } from "../../store/store";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
 
 
 const SignIn = () => {
@@ -62,6 +63,7 @@ const SignIn = () => {
           : null}
         </form>
       </main>
+      <Footer />
     </>
   )
 
